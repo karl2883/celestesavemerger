@@ -270,6 +270,10 @@ def merge_map_area_stats(area_stats, root):
         for area_mode_stat in mode_el:
             area_mode_stats_all[i].append(area_mode_stat)
             i += 1
+            # this condition solely exists because of an Everest april fools thing (crab sides) which corrupted some peoples saves
+            # thanks viddie for providing his saves so I got to fix that
+            if i == 3:
+                break
     for area_mode_stats in area_mode_stats_all:
         merge_area_mode_stats(area_mode_stats, modes_element)
 

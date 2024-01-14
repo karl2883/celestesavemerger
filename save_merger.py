@@ -370,7 +370,7 @@ def merge_safe_last_area_and_session(root_with_session, root):
 def write_new_tree(root, output_file):
     tree = ET.ElementTree(root)
     ET.indent(tree, "  ")
-    tree.write(output_file, encoding="utf-8", xml_declaration=True)
+    tree.write(os.path.join("generated", output_file), encoding="utf-8", xml_declaration=True)
 
 def merge_trees(data_list, output_file):
     # create root element
@@ -428,6 +428,8 @@ while True:
 
 output_filename = inp + ".celeste"
 
+os.mkdir("generated")
+
 merge_trees(roots, output_filename)
 print(f"Generated file {output_filename}")
 
@@ -436,7 +438,7 @@ if file_with_selected_session_ind != None:
     modsession_filenames = list(filter(lambda filename: re.search(f"^{session_file_number}-modsession.+\.celeste$", filename), filenames))
     for modsession_filename in modsession_filenames:
         new_modsession_filename = f"{inp}" + modsession_filename[modsession_filename.find("-modsession"):]
-        shutil.copyfile(modsession_filename, new_modsession_filename)
+        shutil.copyfile(modsession_filename, os.path.join("generated", new_modsession_filename))
         print(f"Generated file {new_modsession_filename}")
 
 inp2 = input("Do you want to choose from existing modsave files for your save slot? They store (typically not very important) mod specific save data and cannot be automatically merged [y/n]: ")
@@ -481,7 +483,7 @@ if inp2.lower() == "y":
             if 0 < int(inp3) and int(inp3) <= len(modsave_file_contents):
                 fn = modsave_file_contents[int(inp3)-1][0]
                 new_filename = f"{inp}" + fn[fn.find("-modsave"):]
-                shutil.copyfile(fn, new_filename)
+                shutil.copyfile(fn, os.path.join("generated", new_filename))
                 print(f"Generated file {new_filename}")
             else:
                 print("Invalid input, proceeding with no modsave file.")

@@ -123,7 +123,7 @@ def merge_poems(data_list, root):
     for poem_root in poem_roots:
         for poem in poem_root:
             poems.add(poem.text)
-    poem_elem = create_subelement(root, "Poems")
+    poem_elem = create_subelement(root, "Poem")
     for poem in poems:
         create_subelement(poem_elem, "string", poem)
 
@@ -432,7 +432,8 @@ while True:
 
 output_filename = inp + ".celeste"
 
-os.mkdir("generated")
+if not os.path.isdir("generated"):
+    os.mkdir("generated")
 
 merge_trees(roots, output_filename)
 print(f"Generated file {output_filename}")

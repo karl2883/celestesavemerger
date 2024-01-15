@@ -3,7 +3,7 @@
 The python script in the repository automatically merges Celeste saves. The program uses the contents of your Celeste/Saves directory. You can select the input save slots and the output save slot. The program will add up deaths and time for maps and merge all other save data in the way which makes the most sense. Additionally, you will be able to choose the name of the player and if the Cheat/Assist/Variant modes are enabled. You can also choose to keep an active session from the input save slots.
 ## Instructions
 0. Back up your save files in case something goes wrong.
-1. If Python isn't installed on your machine, install it under https://www.python.org/downloads/ .
+1. If Python 3.9 or higher (check with `python --version`) isn't installed on your machine, install it under https://www.python.org/downloads/ .
 2. Download the save_merger.py file.
 3. Create a new directory (doesn't matter where) and put the python script in it.
 4. Copy all of the contents of your Celeste/Saves directory (not the directory itself) into your newly created directory.
